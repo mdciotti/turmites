@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Turmite</title>
+		<meta charset="utf-8">
+		<script src="js/zepto.min.js"></script>
+		<script src="js/main.js"></script>
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				margin: 0;
+				background-color: #222222;
+				height: 100%;
+				color: #CCCCCC;
+				font-family: 'Input Mono', monospace;
+				font-weight: 200;
+				cursor: default;
+			}
+			h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
+			h1 { color: #EEEEEE; }
+			h2 { color: #DDDDDD; }
+			h3 { color: #CCCCCC; }
+			p { color: #888888; }
+			a:link, a:visited { text-decoration: none; color: #CCCCCC; }
+			a:link:hover, a:visited:hover { color: #CC3333; }
+			input {
+				appearance: none;
+				padding: 0;
+				border: none;
+				background: none;
+				font-family: inherit;
+				font-weight: inherit;
+				font-size: inherit;
+				color: #CCCCCC;
+				outline: none;
+			}
+			input:not([type="button"]):focus, input[type="button"]:not(:disabled):hover { color: #CC3333; }
+			input:disabled { color: #888888; }
+			::selection { background-color: #CC3333; color: #CCCCCC; }
+
+			#view {
+				display: flex;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			#sim {
+				flex: 1 1 auto;
+				display: flex;
+				flex-direction: column;
+			}
+			#controls {
+				flex: 1 1 auto;
+				order: 2;
+				padding: 16px;
+				overflow-y: auto;
+			}
+			#controls input {
+				flex: 1 1 auto;
+			}
+			.control label {
+				color: #888888;
+			}
+			.control label::after {
+				content: ': ';
+			}
+			#sim canvas {
+				flex: 0 0 auto;
+				display: block;
+				margin: 0 auto;
+				order: 1;
+			}
+			#preview {
+				width: 512px;
+				flex: 1 1 auto;
+				display: flex;
+				flex-wrap: wrap;
+				order: 2;
+				overflow-y: auto;
+			}
+			#preview .item {
+				flex: 0 0 auto;
+				/*border: 2px solid #000000;*/
+				transition: opacity 500ms linear;
+				opacity: 0;
+			}
+			#preview .item.loaded {
+				opacity: 1;
+			}
+			#transition td::before {
+				content: '(';
+			}
+			#transition td::after {
+				content: ')';
+			}
+		</style>
+	</head>
+	<body>
+		<div id="view">
+			<div id="controls">
+				<h1>Turmite Simulator</h1>
+				<p><a href="https://en.wikipedia.org/wiki/Turmite">Turmites</a> are a kind of Turing machine that have orientation in addition to state, and operate on a two-dimensional grid of cells instead of a linear tape.</p>
+				<p>Click in the space to the left to create a new turmite. Choose the type of turmite to create by clicking on a preview below, or create your own by modifying its properties.</p>
+				<p>Created by <a href="http://mdc.io/">mdciotti</a>. <a href="https://www.github.com/mdciotti/turmites">Source</a>.</p>
+				<h2>Playback Controls</h2>
+				<div class="control">
+					<label for="frame">frame</label>
+					<input id="frame" type="number" disabled value="0">
+				</div>
+				<div class="control">
+					<label for="fps">frames per second</label>
+					<input id="fps" type="number" value="20" min="1" max="60" step="1">
+				</div>
+				<div>
+					<input type="button" id="clear" value="clear">
+					<input type="button" id="pause" value="pause">
+					<input type="button" id="play" value="play" disabled>
+					<input type="button" id="stop" value="stop">
+					<input type="button" id="start" value="start" disabled>
+					<input type="button" id="step" value="step" disabled>
+					<input type="button" id="jump" value="jump" disabled>
+				</div>
+				<h2>Turmite Properties</h2>
+				<div class="control"><label for="t-name">name</label><input id="t-name" type="text"></div>
+				<div class="control"><label for="t-description">description</label><input id="t-description" type="text"></div>
+				<div class="control"><label for="t-author">author</label><input id="t-author" type="text"></div>
+				<div class="control"><label for="t-frame">preview</label><input id="t-frame" type="number" min="0" step="1"></div>
+				<div class="control"><label for="t-specifier">specifier</label><input id="t-specifier" type="text"></div>
+				<h3>Transition Table</h3>
+				<div class="control">
+					<label for="t-states">states</label> &times; <label for="t-colors">colors</label>
+					<span>(</span>
+					<input id="t-states" type="number" min="1" max="10" step="1" title="states">
+					<span>) &times; (</span>
+					<input id="t-colors" type="number" min="1" max="10" step="1" title="colors">
+					<span>)</span>
+				</div>
+				<table id="transition"></table>
+				<div class="control">
+					<input type="button" id="randomize" value="randomize">
+					<input type="button" id="save" value="save">
+				</div>
+			</div>
+			<div id="sim">
+				<div id="preview"></div>
+			</div>
+		</div>
+	</body>
+</html>

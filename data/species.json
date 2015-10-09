@@ -1,0 +1,45 @@
+[
+	{
+		"id": "", "name": "F1", "author": "Ferkel", "frame": 27731,
+		"description": "Production of a highway after a period of chaotic growth.",
+		"specifier": "{{{1, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}"
+	},
+	{
+		"id": "", "name": "F2", "author": "Ferkel", "frame": 8342,
+		"description": "Exhibits both chaotic and regular phases.",
+		"specifier": "{{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}}"
+	},
+	{
+		"id": "", "name": "Spiral", "author": "Ferkel", "frame": 12536,
+		"description": "A spiral growth.",
+		"specifier": "{{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}"
+	},
+	{
+		"id": "", "name": "Fibonacci Spiral", "author": "Ferkel", "frame": 10211,
+		"description": "",
+		"specifier": "{{{1, 8, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 1, 0}}}"
+	},
+	{
+		"id": "", "name": "F4", "author": "Ferkel", "frame": 223577,
+		"description": "Growth with a distinctive texture inside an expanding frame.",
+		"specifier": "{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 0}, {0, 8, 1}}}"
+	},
+	{
+		"id": "", "name": "F5", "author": "Ferkel", "frame": 65932,
+		"description": "Chaotic growth with a distinctive texture.",
+		"specifier": "{{{1, 2, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 2, 0}}}",
+		"specifier2": "{{1R1,1L1}{1R1,0R0}}"
+	},
+	{
+		"id": "", "name": "Langton's Ant", "author": "Langton", "frame": 11000,
+		"description": "",
+		"specifier": "{{{1, 2, 0}, {0, 8, 0}}}",
+		"specifier2": "{{1R0,0L0}}"
+	},
+	{
+		"id": "", "name": "Binary Counter", "author": "Pegg", "frame": 78534,
+		"description": "",
+		"specifier": "{{{1, 2, 0}, {0, 1, 0}}}",
+		"specifier2": "{{1R0,0N0}}"
+	}
+]
